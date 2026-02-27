@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 28
+    },
+    "auditLog": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\.75922e98aeb88cba45d5729b77ae256b30130cbe-audit.json",
+    "files": [
+        {
+            "date": 1771223155811,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-16.log",
+            "hash": "bca3115da8fe46d5eeff07a0caada89a3ab8aee79c0467bae2550281f969bef4"
+        },
+        {
+            "date": 1771266600033,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-17.log",
+            "hash": "f9303646775378aa3eef5459313763ea187739e5fac997516f40c617c3fa2f75"
+        },
+        {
+            "date": 1771353000031,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-18.log",
+            "hash": "3bafcd5063bf227dda42723f97e69ccc6afcefb1c0901eb791326bad3b48e51c"
+        },
+        {
+            "date": 1771439400045,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-19.log",
+            "hash": "2c45a24bcdf7feee5037551b61c00271633ecc34844b138cf37ad3d5aad3482d"
+        },
+        {
+            "date": 1771525800042,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-20.log",
+            "hash": "1802c7470b8723e35e9e7fb6c7b484188e24096a776536e0d8b7985f6dad7051"
+        },
+        {
+            "date": 1771820806405,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-23.log",
+            "hash": "0d4b86464edd8da6c66b516db9389f071346b42052bc502d6f59402af8885ecc"
+        },
+        {
+            "date": 1772085973337,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-26.log",
+            "hash": "f0f629e074557d72288125b81e5424c0f61272d7f75228db55e588eb0459b4ee"
+        },
+        {
+            "date": 1772130600042,
+            "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\info-2026-02-27.log",
+            "hash": "696ae95fe2e5065d7b0026b50810df480e852f3e0a1d97c019acecaaa9eca882"
+        }
+    ],
+    "hashType": "sha256"
+}

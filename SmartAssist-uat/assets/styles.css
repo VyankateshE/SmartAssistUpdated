@@ -1,0 +1,87 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 40px 0;
+  }
+  
+  .email-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .email-container {
+    background-color: #ffffff;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    display: block;
+    margin: 0 auto 20px;
+    height: 40px;
+  }
+  
+  .header-text {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .body-text,
+  .info-text,
+  .footer-text {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .otp-box {
+    font-size: 32px;
+    letter-spacing: 10px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    padding: 15px 225px;
+    display: inline-block;
+    margin: 0 auto 30px;
+    border-radius: 8px;
+  }
+  
+  .declaration-section,
+  .terms-section {
+    margin-top: 30px;
+  }
+  
+  .declaration-section h2,
+  .terms-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .declaration-section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .declaration-section td {
+    padding: 5px 10px;
+  }
+  
+  .terms-section ol {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+  
+  .footer-text {
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
