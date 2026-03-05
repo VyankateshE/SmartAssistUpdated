@@ -34,6 +34,7 @@
             "date": 1772165455178,
             "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\error-2026-02-27.log",
             "hash": "c547bd51056966f7d2bc7f6e64c0a92cc9daab1aacfd51d2d5a1a410fa4ac842"
+<<<<<<< HEAD
         },
         {
             "date": 1772425297323,
@@ -44,6 +45,8 @@
             "date": 1772597018354,
             "name": "D:\\Node_Folder\\SmartAssist-uat\\server-logs\\error-2026-03-04.log",
             "hash": "6e2cfb185cc81b4c9b6fb7b13b2f7bf85411df05215dbc18ccfb536a3840bf61"
+=======
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
         }
     ],
     "hashType": "sha256"

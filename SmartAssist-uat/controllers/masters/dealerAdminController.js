@@ -534,7 +534,11 @@ const getAllLeads = async (req, res) => {
             hasNextPage: page < totalPages,
             hasPreviousPage: page > 1,
           }
+<<<<<<< HEAD
         : null,
+=======
+        : null, // ✅ Hide pagination if not used
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
       search,
     };
 

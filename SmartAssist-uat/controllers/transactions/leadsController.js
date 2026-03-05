@@ -30,7 +30,10 @@ const Vehicles = require("../../models/master/vehicleModel");
 // const moment = require("moment-timezone");
 const { PDFDocument, StandardFonts, rgb } = require("pdf-lib");
 const puppeteer = require("puppeteer");
+<<<<<<< HEAD
 const defenderGuideModel = require("../../models/master/defenderGuideModel");
+=======
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
 
 
 
@@ -1133,6 +1136,7 @@ const createOpportunity = async (req, res) => {
 //end
 
 
+<<<<<<< HEAD
 const PDF_TEMPLATE_PATH =
 "D:/Node_Folder/SmartAssist-uat/pdfFolder/250107_IND_Handover Guide_DEFENDER_V12_Justify_Approved_Interactive.pdf";
 
@@ -1229,10 +1233,129 @@ const generateDefenderGuidePdf = async (req, res) => {
 
     const lead = await Leads.findByPk(leadId, { raw: true });
 
+=======
+
+
+// ─────────────────────────────────────────────
+//  PATHS
+// ─────────────────────────────────────────────
+const PDF_TEMPLATE_PATH =
+  "D:/Node_Folder/SmartAssist-uat/pdfFolder/250107_IND_Handover Guide_DEFENDER_V12_Justify_Approved_Interactive.pdf";
+
+// ─────────────────────────────────────────────
+//  PAGE SIZE: 1080 x 1536 pts
+//  y = PAGE_HEIGHT - fromTop - fontSize
+// ─────────────────────────────────────────────
+const PAGE_HEIGHT = 1536;
+
+// ─────────────────────────────────────────────
+//  PAGE 5 — DEFENDER DIRECTORY
+// ─────────────────────────────────────────────
+const PAGE5_FIELDS = {
+  productSpecialist:       { x: 280, fromTop: 540, size: 18 },
+  clientExperienceManager: { x: 120, fromTop: 660, size: 13 },
+  salesHead:               { x: 120, fromTop: 760, size: 13 },
+  serviceCRM:              { x: 120, fromTop: 860, size: 13 },
+  serviceHead:             { x: 120, fromTop: 960, size: 13 },
+};
+
+// ─────────────────────────────────────────────
+//  PAGE 14 — VEHICLE CHECKLIST
+// ─────────────────────────────────────────────
+const PAGE14_FIELDS = {
+  // Customer
+  name:    { x: 180, fromTop: 317, size: 18 },
+  contact: { x: 180, fromTop: 357, size: 18 },
+  email:   { x: 180, fromTop: 395, size: 18 },
+
+  name2:    { x: 740, fromTop: 317, size: 18 },
+  contact2: { x: 740, fromTop: 357, size: 18 },
+  email2:   { x: 740, fromTop: 395, size: 18 },
+
+  // Vehicle
+  model:      { x: 180, fromTop: 430,  size: 18 },
+  modelYear:  { x: 730, fromTop: 460,  size: 18 },
+  mfgYear:    { x: 730, fromTop: 490,  size: 18 },
+  engineNo:   { x: 730, fromTop: 510,  size: 18 },
+  chassisNo:  { x: 730, fromTop: 540,  size: 18 },
+  fuelType:   { x: 730, fromTop: 560, size: 18 },
+  exterior:   { x: 730, fromTop: 580, size: 18 },
+  upholstery: { x: 730, fromTop: 600, size: 18 },
+
+  // Dates
+  insuranceDate: { x: 160, fromTop: 1180, size: 13 },
+  invoiceDate:   { x: 370, fromTop: 1180, size: 13 },
+  pdiDate:       { x: 580, fromTop: 1180, size: 13 },
+  deliveryDate:  { x: 790, fromTop: 1180, size: 13 },
+
+  // Readings
+  fuelReading:     { x: 265, fromTop: 1260, size: 13 },
+  odometerReading: { x: 730, fromTop: 1260, size: 13 },
+};
+
+// ─────────────────────────────────────────────
+//  FONT LOADER — extracts font from PDF itself
+// ─────────────────────────────────────────────
+async function loadTemplateFont(pdfDoc) {
+  try {
+    const firstPage    = pdfDoc.getPages()[0];
+    const resources    = firstPage.node.Resources();
+    if (!resources) throw new Error("No resources");
+
+    const fontDict = resources.lookup(pdfDoc.context.obj("Font"));
+    if (!fontDict) throw new Error("No font dict");
+
+    const fontKeys = fontDict.keys();
+    if (!fontKeys.length) throw new Error("No font keys");
+
+    const fontRef      = fontDict.lookup(fontKeys[0]);
+    const fontDescDict = fontRef.lookup(pdfDoc.context.obj("FontDescriptor"));
+    if (!fontDescDict) throw new Error("No font descriptor");
+
+    const fontFileRef =
+      fontDescDict.lookup(pdfDoc.context.obj("FontFile2")) ||
+      fontDescDict.lookup(pdfDoc.context.obj("FontFile3")) ||
+      fontDescDict.lookup(pdfDoc.context.obj("FontFile"));
+    if (!fontFileRef) throw new Error("No font file");
+
+    return await pdfDoc.embedFont(fontFileRef.contents, { subset: true });
+
+  } catch (err) {
+    console.warn("[Font] Falling back to Helvetica:", err.message);
+    return await pdfDoc.embedFont(StandardFonts.Helvetica);
+  }
+}
+
+
+async function drawField(page, pdfDoc, text, field, options = {}) {
+  if (text === null || text === undefined || text === "") return;
+
+  const font     = options.font || await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const fontSize = field.size || 13;
+  const y        = PAGE_HEIGHT - field.fromTop - fontSize;
+
+  page.drawText(String(text), {
+    x: field.x,
+    y,
+    size: fontSize,
+    font,
+    color: field.color || rgb(0, 0, 0),
+    ...(field.maxWidth && { maxWidth: field.maxWidth }),
+  });
+}
+
+
+const downloadGuideWithProductSpecialist = async (req, res) => {
+  try {
+    const leadId = req.params.leadId;
+
+    const lead = await Leads.findByPk(leadId, { raw: true });
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
     if (!lead) {
       return res.status(404).json({ message: "Lead not found" });
     }
 
+<<<<<<< HEAD
     const guide = await defenderGuideModel.findOne({
       where: { lead_id: leadId },
       raw: true
@@ -1471,6 +1594,67 @@ const getDefenderGuide = async (req, res) => {
     return res.json(guide);
   } catch (err) {
     return res.status(500).json({ message: "Fetch failed" });
+=======
+    const existingPdf = fs.readFileSync(PDF_TEMPLATE_PATH);
+    const pdfDoc      = await PDFDocument.load(existingPdf);
+    const pages       = pdfDoc.getPages();
+
+    const font       = await loadTemplateFont(pdfDoc);
+    const fontOption = { font };
+
+    // ── PAGE 5 ───────────────────────────────────
+    const page5 = pages[4];
+
+    await drawField(page5, pdfDoc, lead.lead_owner,  PAGE5_FIELDS.productSpecialist,       fontOption);
+    // Add these DB columns when available in your leads table:
+    // await drawField(page5, pdfDoc, lead.client_experience_manager, PAGE5_FIELDS.clientExperienceManager, fontOption);
+    // await drawField(page5, pdfDoc, lead.sales_head,                PAGE5_FIELDS.salesHead,               fontOption);
+    // await drawField(page5, pdfDoc, lead.service_crm,               PAGE5_FIELDS.serviceCRM,              fontOption);
+    // await drawField(page5, pdfDoc, lead.service_head,              PAGE5_FIELDS.serviceHead,             fontOption);
+
+    // ── PAGE 14 ──────────────────────────────────
+    const page14 = pages[13];
+
+    // ✅ Use lead_name directly — already full name from DB
+    await drawField(page14, pdfDoc, lead.lead_name,      PAGE14_FIELDS.name,    fontOption);
+    await drawField(page14, pdfDoc, lead.mobile,         PAGE14_FIELDS.contact, fontOption);
+    await drawField(page14, pdfDoc, lead.email,          PAGE14_FIELDS.email,   fontOption);
+
+    await drawField(page14, pdfDoc, lead.lead_name,      PAGE14_FIELDS.name2,    fontOption);
+    await drawField(page14, pdfDoc, lead.mobile,         PAGE14_FIELDS.contact2, fontOption);
+    await drawField(page14, pdfDoc, lead.email,          PAGE14_FIELDS.email2,   fontOption);
+
+    // Vehicle details
+    await drawField(page14, pdfDoc, lead.vehicle_name,   PAGE14_FIELDS.model,         fontOption);
+    await drawField(page14, pdfDoc, lead.VIN,            PAGE14_FIELDS.chassisNo,     fontOption);
+    await drawField(page14, pdfDoc, lead.fuel_type,      PAGE14_FIELDS.fuelType,      fontOption);
+    await drawField(page14, pdfDoc, lead.exterior_color, PAGE14_FIELDS.exterior,      fontOption);
+
+    // Add these DB columns if they exist in your leads table:
+    // await drawField(page14, pdfDoc, lead.model_year,     PAGE14_FIELDS.modelYear,     fontOption);
+    // await drawField(page14, pdfDoc, lead.mfg_year,       PAGE14_FIELDS.mfgYear,       fontOption);
+    // await drawField(page14, pdfDoc, lead.engine_no,      PAGE14_FIELDS.engineNo,      fontOption);
+    // await drawField(page14, pdfDoc, lead.upholstery,     PAGE14_FIELDS.upholstery,    fontOption);
+    // await drawField(page14, pdfDoc, lead.insurance_date, PAGE14_FIELDS.insuranceDate, fontOption);
+    // await drawField(page14, pdfDoc, lead.invoice_date,   PAGE14_FIELDS.invoiceDate,   fontOption);
+    // await drawField(page14, pdfDoc, lead.pdi_date,       PAGE14_FIELDS.pdiDate,       fontOption);
+    // await drawField(page14, pdfDoc, lead.delivery_date,  PAGE14_FIELDS.deliveryDate,  fontOption);
+    // await drawField(page14, pdfDoc, lead.fuel_reading,   PAGE14_FIELDS.fuelReading,   fontOption);
+    // await drawField(page14, pdfDoc, lead.odometer_reading, PAGE14_FIELDS.odometerReading, fontOption);
+
+    // ── Flatten → non-editable ───────────────────
+    pdfDoc.getForm().flatten();
+
+    // ── Send ─────────────────────────────────────
+    const pdfBytes = await pdfDoc.save();
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename=Defender_Guide_${leadId}.pdf`);
+    return res.send(Buffer.from(pdfBytes));
+
+  } catch (err) {
+    console.error("[PDF] Error:", err);
+    return res.status(500).json({ message: "Failed to generate PDF", error: err.message });
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
   }
 };
 
@@ -1486,6 +1670,7 @@ module.exports = {
   existingLeads,
   markLost,
   createOpportunity,
+<<<<<<< HEAD
   generateDefenderGuidePdf,
   saveDefenderGuide,
   getDefenderGuide
@@ -1498,3 +1683,7 @@ module.exports = {
 
 
 
+=======
+  downloadGuideWithProductSpecialist
+};
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5

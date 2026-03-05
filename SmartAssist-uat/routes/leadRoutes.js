@@ -14,6 +14,7 @@ const {
 // } = require("../middlewares/validators/checkRole");
 
 router.use(verifyToken);
+<<<<<<< HEAD
 
 // Venky
 router.post("/defender-guide/:leadId", leadsController.saveDefenderGuide);
@@ -21,6 +22,9 @@ router.get("/defender-guide/:leadId", leadsController.getDefenderGuide);
 router.get("/getLeadData/:leadId",leadsController.generateDefenderGuidePdf);
 
 
+=======
+router.get("/getLeadData/:leadId",leadsController.downloadGuideWithProductSpecialist);
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
 router.post("/create/new", leadsController.createLead);
 router.get("/fetch/all", leadsController.getAllLeadsByUser);
 router.get("/my-teams/all", leadsController.getAllLeadsByTeamOwner);

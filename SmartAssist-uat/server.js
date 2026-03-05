@@ -57,7 +57,11 @@ const generalManager = require("./routes/generalManagerRoutes");
 // const DefenderGuide = require("../SmartAssist-uat/models/master/defenderGuideModel");
 
 
+<<<<<<< HEAD
 // // // with your existing sequelize sync or db connection:
+=======
+// // with your existing sequelize sync or db connection:
+>>>>>>> 27fb6eb53d10f6b2477adc8ebfdd8a8f302bcbe5
 // DefenderGuide.sync({ alter: true })
 //   .then(() => console.log("✅ defender_guides table ready"))
 //   .catch((err) => console.error("❌ sync failed:", err.message));

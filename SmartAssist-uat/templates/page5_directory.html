@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  /* ── Reset ───────────────────────────────────── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── Page: matches 1080x1536 pt original ─────── */
+  html, body {
+    width: 1080px;
+    height: 1536px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #1a1a1a;
+    position: relative;
+  }
+
+  /* ── Background image (original PDF page as bg) ─ */
+  .page-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px;
+    height: 1536px;
+    z-index: 0;
+  }
+
+  /* ── Overlay content sits on top of bg ─────────── */
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px;
+    height: 1536px;
+    z-index: 1;
+  }
+
+  /* ── Directory section ──────────────────────────── */
+  .directory-section {
+    position: absolute;
+    top: 490px;
+    left: 100px;
+    width: 880px;
+  }
+
+  .directory-item {
+    margin-bottom: 58px;
+  }
+
+  .directory-label {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+
+  .directory-value {
+    font-size: 20px;
+    font-weight: 400;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 4px;
+    min-height: 30px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background: original PDF page rendered as image -->
+<img class="page-bg" src="{{PAGE5_BG}}" />
+
+<div class="overlay">
+  <div class="directory-section">
+
+    <div class="directory-item">
+      <div class="directory-label">PRODUCT SPECIALIST</div>
+      <div class="directory-value">{{PRODUCT_SPECIALIST}}</div>
+    </div>
+
+    <div class="directory-item">
+      <div class="directory-label">CLIENT EXPERIENCE MANAGER</div>
+      <div class="directory-value">{{CLIENT_EXPERIENCE_MANAGER}}</div>
+    </div>
+
+    <div class="directory-item">
+      <div class="directory-label">SALES HEAD</div>
+      <div class="directory-value">{{SALES_HEAD}}</div>
+    </div>
+
+    <div class="directory-item">
+      <div class="directory-label">SERVICE CLIENT RELATIONSHIP MANAGER</div>
+      <div class="directory-value">{{SERVICE_CRM}}</div>
+    </div>
+
+    <div class="directory-item">
+      <div class="directory-label">SERVICE HEAD</div>
+      <div class="directory-value">{{SERVICE_HEAD}}</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px;
+    height: 1536px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #1a1a1a;
+    position: relative;
+  }
+
+  .page-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px;
+    height: 1536px;
+    z-index: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1080px;
+    height: 1536px;
+    z-index: 1;
+  }
+
+  /* ── Two-column fields grid ─────────────────────── */
+  .fields-grid {
+    position: absolute;
+    top: 795px;
+    left: 60px;
+    width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    row-gap: 0px;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #bbb;
+    padding: 6px 0 4px 0;
+    min-height: 42px;
+  }
+
+  .field-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    white-space: nowrap;
+    margin-right: 8px;
+    min-width: 110px;
+  }
+
+  .field-value {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1a1a1a;
+    flex: 1;
+  }
+
+  /* ── Dates row ──────────────────────────────────── */
+  .dates-row {
+    position: absolute;
+    top: 1155px;
+    left: 60px;
+    width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .date-item {
+    border-bottom: 1px solid #bbb;
+    padding: 6px 0 4px 0;
+  }
+
+  .date-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    margin-bottom: 3px;
+  }
+
+  .date-value {
+    font-size: 15px;
+    color: #1a1a1a;
+    min-height: 22px;
+  }
+
+  /* ── Fuel / Odometer row ────────────────────────── */
+  .readings-row {
+    position: absolute;
+    top: 1240px;
+    left: 60px;
+    width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+  }
+
+  .reading-item {
+    display: flex;
+    align-items: baseline;
+    border-bottom: 1px solid #bbb;
+    padding: 6px 0 4px 0;
+  }
+
+  .reading-label {
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  .reading-value {
+    font-size: 16px;
+    color: #1a1a1a;
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+
+<img class="page-bg" src="{{PAGE14_BG}}" />
+
+<div class="overlay">
+
+  <!-- Two-column customer + vehicle fields -->
+  <div class="fields-grid">
+
+    <!-- Left: Customer -->
+    <div class="field-row">
+      <span class="field-label">Name*:</span>
+      <span class="field-value">{{NAME}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Model*:</span>
+      <span class="field-value">{{MODEL}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">Contact*:</span>
+      <span class="field-value">{{CONTACT}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Model Year*:</span>
+      <span class="field-value">{{MODEL_YEAR}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">E-mail*:</span>
+      <span class="field-value">{{EMAIL}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Mfg. Year*:</span>
+      <span class="field-value">{{MFG_YEAR}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">Address*:</span>
+      <span class="field-value">{{ADDRESS}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Engine No.*:</span>
+      <span class="field-value">{{ENGINE_NO}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">City*:</span>
+      <span class="field-value">{{CITY}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Chassis No.*:</span>
+      <span class="field-value">{{CHASSIS_NO}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">State*:</span>
+      <span class="field-value">{{STATE}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Fuel Type*:</span>
+      <span class="field-value">{{FUEL_TYPE}}</span>
+    </div>
+
+    <div class="field-row">
+      <span class="field-label">PIN Code*:</span>
+      <span class="field-value">{{PIN_CODE}}</span>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Exterior*:</span>
+      <span class="field-value">{{EXTERIOR}}</span>
+    </div>
+
+    <div class="field-row" style="border:none;"></div>
+    <div class="field-row">
+      <span class="field-label">Upholstery*:</span>
+      <span class="field-value">{{UPHOLSTERY}}</span>
+    </div>
+
+  </div>
+
+  <!-- Dates -->
+  <div class="dates-row">
+    <div class="date-item">
+      <div class="date-label">Insurance Date*:</div>
+      <div class="date-value">{{INSURANCE_DATE}}</div>
+    </div>
+    <div class="date-item">
+      <div class="date-label">Invoice Date*:</div>
+      <div class="date-value">{{INVOICE_DATE}}</div>
+    </div>
+    <div class="date-item">
+      <div class="date-label">PDI Date*:</div>
+      <div class="date-value">{{PDI_DATE}}</div>
+    </div>
+    <div class="date-item">
+      <div class="date-label">Delivery Date*:</div>
+      <div class="date-value">{{DELIVERY_DATE}}</div>
+    </div>
+  </div>
+
+  <!-- Fuel / Odometer -->
+  <div class="readings-row">
+    <div class="reading-item">
+      <span class="reading-label">Fuel Tank Reading*:</span>
+      <span class="reading-value">{{FUEL_READING}} Ltr.</span>
+    </div>
+    <div class="reading-item">
+      <span class="reading-label">Odometer Reading*:</span>
+      <span class="reading-value">{{ODOMETER_READING}} km</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
