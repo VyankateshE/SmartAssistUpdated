@@ -1,0 +1,7 @@
+FROM node:23-alpine3
+
+WORKDIR /smart-assist
+
+COPY package.json /smart-assist/
+COPY . .
+RUN npm install
